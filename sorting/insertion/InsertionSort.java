@@ -1,8 +1,9 @@
 package sorting.insertion;
 
+import sorting.Command;
 import java.util.ArrayList;
 
-public class InsertionSort
+public class InsertionSort implements Command
 {
   /**
   * This algorithm sorts an arraylist of integers into increasing order
@@ -12,7 +13,7 @@ public class InsertionSort
   *                            that a1' <= a2' <= ... <= an'
   **/
 
-  public static void sort(ArrayList<Integer> a)
+  public static ArrayList<Integer> sort(ArrayList<Integer> a)
   {
     for (int j = 1; j < a.size(); j++)
     {
@@ -26,5 +27,12 @@ public class InsertionSort
       }
       a.set(i+1, key);
     }
+
+    return a;
+  }
+
+  public ArrayList<Integer> execute(ArrayList<Integer> a)
+  {
+    return sort(a);
   }
 }
