@@ -16,6 +16,15 @@ public class InsertionSort
   {
     for (int j = 1; j < a.size(); j++)
     {
+      int key = a.get(j);
+      // Insert key into the sorted sequence A[1...j-1]
+      int i = j - 1;
+      while ((i > -1) && (a.get(i) > key))
+      {
+        a.set(i+1, a.get(i));
+        i = i - 1;
+      }
+      a.set(i+1, key);
     }
   }
 }
