@@ -18,6 +18,14 @@ public class InsertionSort implements Command
   *        = an^2 + bn + c
   *        = O(n^2)
   *
+  *   If the set we are sorting is already sorted, then the running time
+  *   changes becuase we can ignore the while loop. The conditions check
+  *   in the while loop takes only 1 step per iteration
+  *   T(n) = (c1)n + (c2)(n-1) + (c3)(n-1) + (c4)(n-1) + (c7)(n-1)
+  *        = (c1 + c2 + c3 + c4 + c7)(n) - (c2 + c3 + c4 + c7)
+  *        = an-b
+  *        = O(n)
+  *
   * @param a A sequence of n numbers <a1, a2, ..., an>
   * @return ArrayList<Integer> A sequence of n numbers <a1', a2', ..., an'> such
   *                            that a1' <= a2' <= ... <= an'
