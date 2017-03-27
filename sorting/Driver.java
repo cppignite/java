@@ -1,6 +1,7 @@
 package sorting;
 
 import sorting.insertion.InsertionSort;
+import sorting.merge.MergeSort;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,6 +13,7 @@ public class Driver
 
     ArrayList<Command> sortingAlg = new ArrayList<Command>();
     sortingAlg.add(new InsertionSort());
+    sortingAlg.add(new MergeSort());
 
     sortAll(sortingAlg, a);
   }
@@ -20,15 +22,22 @@ public class Driver
   {
     for (Iterator it = sortingAlg.iterator(); it.hasNext();)
     {
+      // Copies the array because java passes by reference
+      // We want to preserve the original array so we can sort it again
       ArrayList<Integer> b = copyArray(a);
+      
+      // Cycles through sorting algorithms
+      Command sort = (Command)it.next();
+
+      // Timer to see how quickly the sorting algorithm runs
       long startTime = System.nanoTime();
-      ((Command)it.next()).execute(b);
+      sort.execute(b);
       long endTime = System.nanoTime();
 
       System.out.println("The sorted list of numbers is: ");
       printArray(b);
-      System.out.println("\nIt took " + (endTime - startTime)/1000000.0 
-                       + " milliseconds");
+      System.out.println(sort + " took " + (endTime - startTime)/1000000.0 
+                       + " milliseconds\n");
     }
   }
   /**
