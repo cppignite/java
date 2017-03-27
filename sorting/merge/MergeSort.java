@@ -78,4 +78,9 @@ public class MergeSort implements Command
       }
     }
   }
+  
+  public String toString()
+  {
+    return "Merge Sort";
+  }
 }

@@ -44,4 +44,9 @@ public class InsertionSort implements Command
   {
     return sort(a);
   }
+
+  public String toString()
+  {
+    return "Insertion Sort";
+  }
 }
