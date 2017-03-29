@@ -1,5 +1,6 @@
 package sorting.quick;
 
+import sorting.Command;
 import java.util.ArrayList;
 public class QuickSort implements Command
 {

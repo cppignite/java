@@ -1,5 +1,6 @@
 package sorting;
 
+import sorting.quick.QuickSort;
 import sorting.insertion.InsertionSort;
 import sorting.merge.MergeSort;
 import java.util.ArrayList;
@@ -9,12 +10,36 @@ public class Driver
 {
   public static void main(String[] args)
   {
-    ArrayList<Integer> a = createRandArray(10);    
+    // Declared an arraylist that will contain our list of random positive int
+    ArrayList<Integer> a = new ArrayList<Integer>();
 
+    // Allows the user to input a custom size for the list of numbers to sort
+    if (args.length > 0)
+    {
+      try
+      {
+        a = createRandArray(Integer.parseInt(args[0]));
+      }
+      catch(NumberFormatException e)
+      {
+        System.err.println("Argument " + args[0] + " must be an integer.");
+        System.exit(1);
+      }
+    }
+    else // else create a list of 10 numbers
+    {
+      a = createRandArray(10);    
+      System.out.println("The current list of numbers is: ");
+      printArray(a);
+    }
+
+    // create a list of sorting algorithms to call
     ArrayList<Command> sortingAlg = new ArrayList<Command>();
     sortingAlg.add(new InsertionSort());
     sortingAlg.add(new MergeSort());
+    // sortingAlg.add(new QuickSort());
 
+    // use all of the sorting algorithms
     sortAll(sortingAlg, a);
   }
 
@@ -34,8 +59,13 @@ public class Driver
       sort.execute(b);
       long endTime = System.nanoTime();
 
-      System.out.println("The sorted list of numbers is: ");
-      printArray(b);
+      if (b.size() <= 10)
+      {
+        System.out.println("The sorted list of numbers is: ");
+        printArray(b);
+      }
+
+      // Prints the how long the sorting alg runs
       System.out.println(sort + " took " + (endTime - startTime)/1000000.0 
                        + " milliseconds\n");
     }
@@ -68,13 +98,10 @@ public class Driver
   public static ArrayList<Integer> createRandArray(int size)
   {
     ArrayList<Integer> a = new ArrayList<Integer>(size);
-    System.out.println("The current list of numbers is: ");
     for (int i = 0; i < size; i++)
     {
-      a.add((int)(Math.random()*100));
-      System.out.print(a.get(i) + " ");
+      a.add((int)(Math.random()*(size*10)));
     }
-    System.out.println();
     
     return a;
   }
