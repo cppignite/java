@@ -6,8 +6,8 @@ public class Driver
     StrassenMatrixMult s = new StrassenMatrixMult();
 
     int size = 2;
-    ArrayList<ArrayList<Integer>> a = new Arraylist<ArrayList<Integer>>();
-    ArrayList<ArrayList<Integer>> b = new Arraylist<ArrayList<Integer>>();
+    ArrayList<ArrayList<Integer>> a = new ArrayList<ArrayList<Integer>>();
+    ArrayList<ArrayList<Integer>> b = new ArrayList<ArrayList<Integer>>();
 
     // populate the matrices with random variables
     for(int i = 0; i < size; i++)
@@ -25,10 +25,11 @@ public class Driver
     // Print matrices
     System.out.println("Matrix a is:");
     s.printMatrix(a);
-    System.out.println("Matrix b is:");
+    System.out.println("\nMatrix b is:");
     s.printMatrix(b);
 
     ArrayList<ArrayList<Integer>> c = s.squareMatrixMultiply(a,b);
+    System.out.println("\nMatric c is:");
     s.printMatrix(c);
   }
 }

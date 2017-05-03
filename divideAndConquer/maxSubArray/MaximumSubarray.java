@@ -58,6 +58,9 @@ public class MaximumSubarray
    * and conquer paradigm because what we are doing is that we are combining
    * the left and right subarrays and returning the sum.
    *
+   * This subroutine works in O(n) time becuase we are just going through all
+   * the elements of the input array once.
+   *
    * @param a - the arraylist of integers we are trying to find the max subarr
    * @param low - the index of the first element
    * @param mid - the index of the cut between the left nad right subarray
@@ -77,7 +80,7 @@ public class MaximumSubarray
     for(int i = mid; i >= low; i--)
     {
       sum = sum + a.get(i);
-      System.out.println("adding " + a.get(i) + ", our sum is " + sum);
+      //System.out.println("adding " + a.get(i) + ", our sum is " + sum);
       if(sum > leftSum) // Update the sum if we found a greater sum
       {
         leftSum = sum;
@@ -92,7 +95,7 @@ public class MaximumSubarray
     for(int j = mid + 1; j <= high; j++)
     {
       sum = sum + a.get(j);
-      System.out.println("adding " + a.get(j) + ", our sum is " + sum);
+      //System.out.println("adding " + a.get(j) + ", our sum is " + sum);
       if(sum > rightSum)
       {
         rightSum = sum;
