@@ -58,8 +58,12 @@ public class MaximumSubarray
    * and conquer paradigm because what we are doing is that we are combining
    * the left and right subarrays and returning the sum.
    *
-   * This subroutine works in O(n) time becuase we are just going through all
-   * the elements of the input array once.
+   * This subroutine works in \Theta(n) time becuase we are just going through 
+   * all the elements of the input array once. The reason this is so is because
+   * each step iteration of the for loop takes \Theta(n) time, so we just need
+   * to count up the amount of iterations altogether. The first for loop takes
+   * (mid - low + 1) iterations and the second for loop takes high-low 
+   * iterations. Thus (mid - low + 1) + (high - mid) = high - low + 1 = n
    *
    * @param a - the arraylist of integers we are trying to find the max subarr
    * @param low - the index of the first element
