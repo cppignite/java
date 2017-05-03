@@ -43,7 +43,7 @@ public class MaximumSubarray
       Tuple crossT = findMaxCrossingSubarray(a, low, mid, high);
       if(leftT.sum >= rightT.sum && leftT.sum >= crossT.sum)
       {
-        System.out.println("The leftT sum is " + leftT.sum);
+        //System.out.println("The leftT sum is " + leftT.sum);
         return (new Tuple(leftT.low, leftT.high, leftT.sum));
       }
       else if( rightT.sum >= leftT.sum && rightT.sum >= crossT.sum)
