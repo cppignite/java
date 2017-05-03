@@ -29,6 +29,16 @@ public class MaximumSubarray
    * subarrays, that can be found easily because that is just a smaller
    * instance of the main problem.
    *
+   * Analysis: T(n) = Theta(1) + 2T(n/2) + Theta(n) + Theta(1)
+   *                = 2T(n/2) + Theta(n)
+   *                = Theta(n lg n) (because it's the same as merge sort)
+   *
+   * @param a - The arraylist that we are analyzing
+   * @param low - the lower bound of the arraylist
+   * @param high - the upper bound of the arraylist
+   * @return Tuple - a tuple containing the array and the lower/upper bound
+   *                 that contains the greatest subarray
+   *
    **/
   public Tuple findMaxSubarray(ArrayList<Integer> a, int low, int high)
   {
@@ -37,10 +47,13 @@ public class MaximumSubarray
       return (new Tuple(low, high, a.get(low)));
     else
     {
-      mid = (int)((low + high)/2.0);
+      // recursive case: we know that the subarray contains at least two entries 
+      mid = (int)((low + high)/2.0); // This floors the possible double value
       Tuple leftT = findMaxSubarray(a, low, mid);
       Tuple rightT = findMaxSubarray(a, mid+1, high);
       Tuple crossT = findMaxCrossingSubarray(a, low, mid, high);
+
+      // This tests whether the left, right, or middle sum have the greatest val
       if(leftT.sum >= rightT.sum && leftT.sum >= crossT.sum)
       {
         //System.out.println("The leftT sum is " + leftT.sum);
