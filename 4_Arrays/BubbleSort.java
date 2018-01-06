@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class BubbleSort {
     public static void main(String[] args) {
@@ -17,7 +17,6 @@ public class BubbleSort {
                     trigger = true;
                 }
             }
-
 
             if (trigger == false)
                 sorted = true;
